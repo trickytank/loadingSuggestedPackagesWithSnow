@@ -1,0 +1,16 @@
+Package: loadingSuggestedPackagesWithSnow
+Type: Package
+Title: Loading packages from within snow
+Version: 0.1.0
+Author: Rick Tankard
+Maintainer: Rick Tankard <rickmtankard@gmail.com>
+Description: Trying to work out how to load packages from within snow instances
+    without using the library or require function, which causes a warning in 
+    R CMD Check
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports:
+  snow
+Suggests:
+  dplyr
