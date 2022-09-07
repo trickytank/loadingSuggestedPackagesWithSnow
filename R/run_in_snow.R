@@ -12,13 +12,13 @@ run_in_snow <- function(cluster) {
   })
   starwars_list <- list(slice_sample(starwars, n = 2), slice_sample(starwars, n = 3))
   snow::clusterExport(cluster, c("another_function"))
-  now::parLapply(cluster, starwars_list, simple_function)
+  snow::parLapply(cluster, starwars_list, simple_function)
 }
 
-simple_function(x) {
+simple_function <- function(x) {
   another_function(x)
 }
 
-another_function(x) {
+another_function <- function(x) {
   mutate(x, height_feet = 0.393701 * height)
 }
