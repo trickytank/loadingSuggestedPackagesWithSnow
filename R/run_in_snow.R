@@ -1,5 +1,6 @@
 #' Load packages from within a snow instance test using require
 #'
+#' @param cluster A cluster object from snow.
 #' @examples
 #' cluster_req <- snow::makeCluster(1)
 #' run_in_snow(cluster_req)
@@ -17,6 +18,7 @@ run_in_snow_require <- function(cluster) {
 
 #' Load packages from within a snow instance test using requireNamespace
 #'
+#' @param cluster A cluster object from snow.
 #' @examples
 #' cluster_rns <- snow::makeCluster(1)
 #' run_in_snow_requireNamespace(cluster_rns)
@@ -25,7 +27,8 @@ run_in_snow_requireNamespace <- function(cluster) {
   if (!requireNamespace("dplyr", quietly = TRUE))
     stop("The package 'dplyr' is required to run this function.")
   snow::clusterEvalQ(cluster, {
-    requireNamespace("dplyr")
+    # requireNamespace("dplyr")
+    require("dplyr")
   })
   starwars_list <- list(slice_sample(starwars, n = 2), slice_sample(starwars, n = 3))
   snow::clusterExport(cluster, c("another_function"))
