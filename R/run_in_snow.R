@@ -1,21 +1,3 @@
-#' Load packages from within a snow instance test using require
-#'
-#' @param cluster A cluster object from snow.
-#' @examples
-#' cluster_req <- snow::makeCluster(1)
-#' run_in_snow_require(cluster_req)
-#' @export
-run_in_snow_require <- function(cluster) {
-  if (!requireNamespace("S4Vectors", quietly = TRUE))
-    stop("The package 'S4Vectors' is required to run this function.")
-  snow::clusterEvalQ(cluster, {
-    require("S4Vectors")
-  })
-  starwars_list <- list(dplyr::slice_sample(starwars, n = 2), dplyr::slice_sample(starwars, n = 3))
-  snow::clusterExport(cluster, c("another_function"))
-  snow::parLapply(cluster, starwars_list, simple_function)
-}
-
 #' Load packages from within a snow instance test using requireNamespace
 #'
 #' @param cluster A cluster object from snow.
