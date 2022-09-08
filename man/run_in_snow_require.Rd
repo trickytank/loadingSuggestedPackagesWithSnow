@@ -6,10 +6,13 @@
 \usage{
 run_in_snow_require(cluster)
 }
+\arguments{
+\item{cluster}{A cluster object from snow.}
+}
 \description{
 Load packages from within a snow instance test using require
 }
 \examples{
 cluster_req <- snow::makeCluster(1)
-run_in_snow(cluster_req)
+run_in_snow_require(cluster_req)
 }

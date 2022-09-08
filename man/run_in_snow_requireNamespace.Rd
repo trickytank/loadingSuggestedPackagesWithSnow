@@ -6,6 +6,9 @@
 \usage{
 run_in_snow_requireNamespace(cluster)
 }
+\arguments{
+\item{cluster}{A cluster object from snow.}
+}
 \description{
 Load packages from within a snow instance test using requireNamespace
 }
